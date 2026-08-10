@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact/contact-form";
+import { Navbar } from "@/components/navbar/navbar";
+import { Footer } from "@/components/footer/footer";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact — Darya",
-  description:
-    "Tell me what you're building and I'll help you turn the idea into a production-ready application.",
+  title: "Contact",
+  description: `Have a system worth building? Tell ${SITE.name} what you're solving and where you want to take it.`,
 };
 
 export default function ContactPage() {
   return (
-    <main className="mx-auto max-w-6xl px-6 pt-24 md:pt-32">
-      <ContactForm />
-    </main>
+    <>
+      <Navbar />
+      <main className="mx-auto max-w-6xl px-6 pt-24 md:pt-32">
+        <ContactForm />
+      </main>
+      <Footer />
+    </>
   );
 }

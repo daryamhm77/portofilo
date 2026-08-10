@@ -1,37 +1,33 @@
-import { SiteHeader } from "@/components/layout/site-header";
+import { Navbar } from "@/components/navbar/navbar";
 import { Hero } from "@/components/hero/hero";
-import { Metrics } from "@/components/metrics/metrics";
-import { Services } from "@/components/services/service-cards";
+import { Capabilities } from "@/components/capabilities/capabilities";
+import { WhatWeBuild } from "@/components/capabilities/what-we-build";
 import { FeaturedProjects } from "@/components/projects/featured-projects";
-import { ArchitectureSection } from "@/components/architecture/architecture-section";
-import { TechStack } from "@/components/tech-stack/tech-grid";
-import { Experience } from "@/components/experience/experience-timeline";
+import { Technology } from "@/components/technology/technology";
+import { Team } from "@/components/team/team";
 import { EngineeringPrinciples } from "@/components/principles/engineering-principles";
-import { About } from "@/components/about/about";
-import { Testimonials } from "@/components/testimonials/testimonial-carousel";
-import { Writing } from "@/components/writing/engineering-notes";
+import { Process } from "@/components/process/process";
+import { Insights } from "@/components/insights/insights";
 import { ContactCta } from "@/components/contact/contact-cta";
-import { SiteFooter } from "@/components/layout/site-footer";
+import { Footer } from "@/components/footer/footer";
 
 export default function Home() {
   return (
     <>
-      <SiteHeader />
+      <Navbar />
       <main>
         <Hero />
-        <Metrics />
-        <Services />
+        <Capabilities />
+        <WhatWeBuild />
         <FeaturedProjects />
-        <ArchitectureSection />
-        <TechStack />
-        <Experience />
+        <Technology />
+        <Team />
         <EngineeringPrinciples />
-        <About />
-        <Testimonials />
-        <Writing />
+        <Process />
+        <Insights />
         <ContactCta />
       </main>
-      <SiteFooter />
+      <Footer />
     </>
   );
 }

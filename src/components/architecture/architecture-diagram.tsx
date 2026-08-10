@@ -52,7 +52,7 @@ export function ArchitectureDiagram({
               <circle
                 key={i}
                 r={2.5}
-                fill="#34d399"
+                fill="#3b9eff"
                 opacity={0.35}
                 style={{ offsetPath: `path("${p.d}")`, offsetDistance: "50%" }}
               />
@@ -60,7 +60,7 @@ export function ArchitectureDiagram({
               <motion.circle
                 key={i}
                 r={2.5}
-                fill="#34d399"
+                fill="#3b9eff"
                 style={{ offsetPath: `path("${p.d}")` }}
                 initial={{ offsetDistance: "0%" }}
                 animate={{ offsetDistance: ["0%", "100%"] }}
@@ -87,7 +87,7 @@ export function ArchitectureDiagram({
               stroke="rgba(255,255,255,0.12)"
               className="transition-colors duration-300 group-hover:stroke-accent"
             />
-            <circle cx={node.x - NODE_SIZE.w / 2 + 16} cy={node.y - 8} r={3} fill="#34d399" />
+            <circle cx={node.x - NODE_SIZE.w / 2 + 16} cy={node.y - 8} r={3} fill="#3b9eff" />
             <text
               x={node.x}
               y={node.y + 1}

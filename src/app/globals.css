@@ -1,23 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: #080808;
+  --background: #050505;
   --foreground: #ffffff;
+  --accent: #3b9eff;
+  --accent-strong: #1e8aff;
+  --accent-violet: #8b5cf6;
+  --accent-cyan: #22d3ee;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-surface: #111111;
-  --color-surface-2: #181818;
+  --color-surface: #0d0d0d;
+  --color-surface-2: #141414;
   --color-edge: rgba(255, 255, 255, 0.08);
   --color-edge-strong: rgba(255, 255, 255, 0.14);
   --color-muted: #a1a1aa;
   --color-subtle: #6e6e76;
-  --color-accent: #34d399;
-  --color-accent-strong: #10b981;
-  --font-sans: var(--font-inter);
-  --font-heading: var(--font-space-grotesk);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-violet: var(--accent-violet);
+  --color-accent-cyan: var(--accent-cyan);
+  --font-sans: var(--font-geist-sans);
+  --font-heading: var(--font-geist-sans);
   --font-mono: var(--font-jetbrains-mono);
 }
 
@@ -38,18 +44,18 @@ body::after {
   inset: 0;
   z-index: 200;
   pointer-events: none;
-  opacity: 0.025;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 h1,
 h2,
 h3 {
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-heading);
 }
 
 ::selection {
-  background: rgba(52, 211, 153, 0.28);
+  background: rgba(59, 158, 255, 0.28);
   color: #fff;
 }
 
@@ -90,10 +96,10 @@ h3 {
 @keyframes pulse-dot {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.45);
+    box-shadow: 0 0 0 0 rgba(59, 158, 255, 0.45);
   }
   70% {
-    box-shadow: 0 0 0 6px rgba(52, 211, 153, 0);
+    box-shadow: 0 0 0 6px rgba(59, 158, 255, 0);
   }
 }
 
@@ -116,6 +122,53 @@ h3 {
 .animate-gradient {
   background-size: 300% 300%;
   animation: gradient-shift 12s ease infinite;
+}
+
+@keyframes packet-flow {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-packet {
+  stroke-dasharray: 4 8;
+  animation: packet-flow 1.2s linear infinite;
+}
+
+@keyframes border-spin {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Space-portfolio glass badge (adapted for WhisperVolt) */
+.welcome-box {
+  isolation: isolate;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  border-radius: 32px;
+  box-shadow: inset 0 -7px 11px #a48fff1f;
+  width: max-content;
+  background: rgba(3, 0, 20, 0.37);
+}
+
+.welcome-text {
+  background:
+    linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)),
+    linear-gradient(90.01deg, #e59cff 0.01%, #ba9cff 50.01%, #9cb2ff 100%);
+  background-blend-mode: normal, screen;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {

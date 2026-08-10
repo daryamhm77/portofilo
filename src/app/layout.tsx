@@ -1,17 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { SITE } from "@/lib/site";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-});
+import { SITE, TEAM } from "@/lib/site";
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -22,31 +13,44 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
     default: SITE.title,
-    template: "%s — Darya",
+    template: `%s — ${SITE.name}`,
   },
   description: SITE.description,
+  icons: {
+    icon: [{ url: "/brand/whispervolt-logo.png", type: "image/png" }],
+    apple: [{ url: "/brand/whispervolt-logo.png", type: "image/png" }],
+    shortcut: "/brand/whispervolt-logo.png",
+  },
   openGraph: {
     title: SITE.title,
     description: SITE.description,
     url: SITE.url,
-    siteName: "Darya — Backend & Full-Stack Developer",
+    siteName: SITE.name,
     type: "website",
+    images: [{ url: SITE.logo }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE.title,
     description: SITE.description,
+    images: [SITE.logo],
   },
 };
 
-const personJsonLd = {
+const orgJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
+  "@type": "Organization",
   name: SITE.name,
   url: SITE.url,
-  email: `mailto:${SITE.email}`,
-  jobTitle: "Backend / Full-Stack Developer",
-  sameAs: [SITE.github, SITE.linkedin],
+  email: SITE.email,
+  description: SITE.description,
+  logo: `${SITE.url}${SITE.logo}`,
+  sameAs: [
+    TEAM.darya.github,
+    TEAM.darya.linkedin,
+    TEAM.nima.github,
+    TEAM.nima.linkedin,
+  ],
 };
 
 const websiteJsonLd = {
@@ -60,12 +64,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${GeistSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className={`${GeistSans.className} flex min-h-full flex-col`}>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
         <script
           type="application/ld+json"
